@@ -106,13 +106,26 @@ const movie = {
 
 showProperties(movie);
 function showProperties(obj) {
-    for (const property in obj) {
-        if (typeof obj[property] == "string") {
-            console.log(`${property}: ${obj[property]}`);
-        }
-    }
+    for (let key in obj)
+        if (typeof obj[key] === 'string')
+            console.log(key, obj[key]);
 }
 
+
+// sum function
+// add all the multiples of 3 and 5 up to the specified limit
+
+console.log(sum(20));
+
+function sum(limit) {
+    let sum = 0;
+
+    for (let i = 0; i <= limit; i++)
+        if (i % 3 === 0 || i % 5 ===0)
+            sum += i;
+
+    return sum;
+}
 
 
 
