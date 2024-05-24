@@ -121,7 +121,7 @@ function sum(limit) {
     let sum = 0;
 
     for (let i = 0; i <= limit; i++)
-        if (i % 3 === 0 || i % 5 ===0)
+        if (i % 3 === 0 || i % 5 === 0)
             sum += i;
 
     return sum;
@@ -157,7 +157,31 @@ function calculateAverage(array) {
 
 
 
+// Show stars exercise
+showStars(6);
+
+function showStars(rows) {
+    for (let row = 0; row <= rows; row++) {
+        console.log("*".repeat(row))
+    }
+}
 
 
 
 
+// showPrimes
+// List all prime numbers up to the limit provided
+
+showPrimes(30);
+
+function showPrimes(limit) {
+    for (let number = 2; number <= limit; number++)
+        if (isPrime(number)) console.log(number);
+}
+
+function isPrime(number) {
+    for (let factor = 2; factor < number; factor++)
+        if (number % factor === 0)
+            return false;
+    return true;
+}
