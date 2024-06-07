@@ -172,7 +172,7 @@ function showStars(rows) {
 // showPrimes
 // List all prime numbers up to the limit provided
 
-showPrimes(30);
+showPrimes(10);
 
 function showPrimes(limit) {
     for (let number = 2; number <= limit; number++)
@@ -185,3 +185,193 @@ function isPrime(number) {
             return false;
     return true;
 }
+
+const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    isVisible: true,
+    draw: function() {
+        console.log("draw");
+    }
+}
+
+circle.draw();
+
+// Factory Function
+
+function createCircle(radius) {
+    return {
+        radius,
+        draw() {
+            console.log("draw");
+        }
+    };
+}
+
+const circle1 = createCircle(1);
+console.log(circle1);
+
+
+// Constructor Function
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log("draw");
+    }
+}
+
+const circle3 = new Circle(1);
+console.log(circle3);
+
+
+// get random number using Math.random()
+function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+const randomNumber = getRandomNumber(2, 5);
+console.log(randomNumber);
+
+
+// Template Literals
+// Perfect for situations where the text is dynamic and 
+// may include formatting such as emails to users etc
+
+const literalMessage = 
+`This is my
+'first' message`;
+
+console.log(literalMessage);
+
+
+
+// Exercise one - address
+
+const address = {
+    street: 'Hawcross',
+    city: 'Gloucester',
+    zipCode: 'GL16 3RT',
+}
+
+function showAddress(address) {
+    for (let key in address)
+        console.log(key, address[key]);
+}
+
+showAddress(address);
+
+// Exercise two - address with factory and constructor function
+
+// Factory Function
+function createAddress(street, city, zipCode) {
+    return {
+        street,
+        city,
+        zipCode
+    };
+}
+
+const address2 = createAddress('a','b','c');
+console.log(address2);
+
+// Constructor Function
+
+function Address(street, city, zipCode) {
+    this.street = street;
+    this.city = city;
+    this.zipCode = zipCode;
+}
+
+const address3 = new Address('aa', 'bb', 'cc');
+console.log(address3);
+
+// Exercise three - create two identical objects and test 
+// a) to see if all their properties are equal - areEqual
+// b) to see if the two objects are pointing to the exact same object - areSame
+
+const address4 = new Address('aa', 'bb', 'cc');
+console.log(address4);
+
+function areEqual(address3, address4) {
+    for (let key in address3) {
+        if (address3[key] === address4[key])
+            return 'True'
+        else
+            return 'False'
+    }
+}
+console.log(areEqual(address3, address4));
+
+function areSame(address3, address4) {
+    return address3 === address4;
+}
+console.log(areSame(address3, address4));
+
+// Exercise 4 - Blog post object
+
+const blog = {
+    title: 'The worst blog post in history',
+    body:
+        `There are so many things I'd liek to say in this post. But I won't.
+    
+        Too many blog posts are full of rubbish, so this will not be another`,
+    author: 'Joe Bloggs',
+    views: 587,
+    comments: [
+        { author: 'Jimmy',body: 'This is the worst blog post I have ever read!!' },
+        { author: 'Johnny', body: 'This is the second worst blog post I have ever read!!' },
+    ],
+    isLive: true,
+}
+
+console.log(blog)
+
+
+// Exercise 5 - Constructor Functions
+// Write a blog post object that isn't published yet
+
+function Post(title, body, author) {
+    this.title = title;
+    this.body = body;
+    this.author = author;
+    this.views = 0;
+    this.comments = [];
+    this.isLive = false;
+}
+
+const post = new Post('My Title', 'This would be the body', 'Jimmy Smits');
+console.log(post);
+
+// Exercise 6 - price range
+function createPriceRange(tooltip, minPrice, maxPrice, label) {
+    return {
+        tooltip,
+        minPrice,
+        maxPrice,
+        label
+    };
+}
+
+const inexpensive = createPriceRange('Inexpensive', 0, 100, '£');
+const pricey = createPriceRange('Pricey', 101, 300, '££');
+const expensive = createPriceRange('Expensive', 301, 10000000, '£££');
+console.log(inexpensive);
+console.log(pricey);
+console.log(expensive);
+
+
+// This is the way Mosh did it:
+
+const priceRanges = [
+    { tooltip: 'Inexpensive', minPrice: 0, maxPrice: 10, label: '£' },
+    { tooltip: 'Pricey', minPrice: 11, maxPrice: 20, label: '££' },
+    { tooltip: 'Expensive', minPrice: 21, maxPrice: 50, label: '£££' },
+]
+
+console.log(inexpensive);
+console.log(pricey);
+console.log(expensive);
