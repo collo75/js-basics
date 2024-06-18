@@ -70,3 +70,52 @@ function countOccurrences(array, searchElement) {
 }
 
 // Exercise 6 - Get Max
+// Returns the largest number in the array
+const numb = [1, 2, 3, 4, 5, 2, 2, 6, 7, 8, 9, 10]
+const max = getMax(numb);
+console.log(max);
+
+
+function getMax(array) {
+    if (array.length === 0) return undefined;
+    // array.reverse();
+    // return array[0];
+    return array.reduce((a, b) => (a > b) ? a : b);
+}
+
+
+// Exercise 7 - Movies
+const movies = [
+    { title: 'a', year: 2018, rating: 4.5 },
+    { title: 'b', year: 2018, rating: 4.7 },
+    { title: 'c', year: 2018, rating: 3 },
+    { title: 'd', year: 2017, rating: 4.5 },
+]
+
+// Get all the movies in 2018 with a rating > 4
+// Sort them by rating in descending order
+// Only display their title. So answer should 'b', 'a'
+const best = topMovies(movies);
+console.log(best);
+
+// My version - works but not the best
+// function topMovies(array) {
+//     if (array.length === 0) return undefined;
+    
+//     const movies2018 = [];
+
+//     for (let element of array)
+//         if (element.year == 2018 && element.rating >= 4)
+//             movies2018.push(element.title);
+//     return movies2018.reverse();
+// }
+
+function topMovies(array) {
+    const titles = movies
+        .filter(m => m.year === 2018 && m.rating >= 4)
+        .sort((a, b) => a.rating - b.rating)
+        .reverse()
+        .map(m => m.title)
+    
+    return titles;
+}
